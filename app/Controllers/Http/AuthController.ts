@@ -1,4 +1,3 @@
-// import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import AuthModules from 'App/Modules/Auth'
 import { registerValidate, loginValidate } from 'App/Validators/AuthValidator'
@@ -27,5 +26,10 @@ export default class AuthController extends AuthModules {
     } catch (error) {
       return this.errorResponseHandle(error, response)
     }
+  }
+
+  public async authUser ({auth,response} : HttpContextContract) {
+    let user = auth.user
+    return this.successResponse(user, null, response)
   }
 }
