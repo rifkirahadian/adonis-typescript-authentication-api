@@ -7,7 +7,7 @@ export default class Responser {
         schema: schema.create(rules),
       })
     } catch (error) {
-      throw error
+      throw this.errorResponseValidation(error, response)
     }
   }
   public successResponse (data, message, response) {
@@ -24,18 +24,22 @@ export default class Responser {
     })
   }
 
+  private errorResponseValidation (errors, response) {
+    return response.json({
+      status: 422,
+      message: errors.messages.errors,
+    })
+  }
+
   public errorResponseHandle (error, response) {
     if (typeof error !== 'undefined') {
       let status = (error.status ? error.status : 500)
-      let message = [{
-        message : error.message,
-      }]
-      if (status === 422) {
-        message = error.messages.errors
-      }
+
       return response.status(status).json({
         status: status,
-        message,
+        message: [{
+          message : error.message,
+        }],
         data: null,
       })
     } else {

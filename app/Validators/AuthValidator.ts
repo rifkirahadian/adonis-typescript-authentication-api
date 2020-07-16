@@ -8,3 +8,9 @@ export const registerValidate = {
   password: schema.string(),
   phoneNumber: schema.number(),
 }
+
+export const loginValidate = {
+  username: schema.string(),
+  password : schema.string(),
+}
+
