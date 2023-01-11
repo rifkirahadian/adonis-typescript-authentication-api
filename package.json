@@ -22,7 +22,7 @@
     "@adonisjs/auth": "^4.2.4",
     "@adonisjs/core": "^5.0.0-preview-rc",
     "@adonisjs/fold": "^6.0.0",
-    "@adonisjs/lucid": "^8.2.2",
+    "@adonisjs/lucid": "^18.3.0",
     "pg": "^8.3.0",
     "proxy-addr": "^2.0.6",
     "reflect-metadata": "^0.1.13",
